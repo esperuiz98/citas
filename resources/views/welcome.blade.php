@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                     CGIS: Welcome to the paradise
+                     Espe cambio
                 </div>
 
                 <div class="links">
