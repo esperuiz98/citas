@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                     CGIS: Citas Pacientes CON CAMBIO
+                     Welcome to the paradise
                 </div>
 
                 <div class="links">
