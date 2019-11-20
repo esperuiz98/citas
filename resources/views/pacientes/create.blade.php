@@ -23,6 +23,10 @@
                             {!! Form::label('nuhsa', 'NUHSA del paciente') !!}
                             {!! Form::text('nuhsa',null,['class'=>'form-control', 'required']) !!}
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('address', 'Dirección del paciente') !!}
+                            {!! Form::text('address',null,['class'=>'form-control', 'required']) !!}
+                        </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
