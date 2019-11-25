@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
+use phpDocumentor\Reflection\Location;
 
 
 class CitaController extends Controller
@@ -56,6 +57,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
+            'location' => 'required|max:255'
 
         ]);
 
@@ -111,7 +113,6 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
