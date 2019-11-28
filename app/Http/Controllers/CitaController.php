@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
 use phpDocumentor\Reflection\Location;
+use function Sodium\add;
 
 
 class CitaController extends Controller
@@ -46,6 +48,9 @@ class CitaController extends Controller
     }
 
     /**
+     *
+     *
+     *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -63,11 +68,16 @@ class CitaController extends Controller
         $cita = new Cita($request->all());
         $cita->save();
 
+        $dif15min = new \DateInterval('PT15M');
+        $fechaInicio = new DateTime($cita->fecha_hora);
+        $fechaInicio->createFromFormat('Y-m-d\TH:i', $cita->fecha_hora);
+        $cita->fecha_fin = $fechaInicio->add($dif15min);
+        $cita->save();
 
         flash('Cita creada correctamente');
-
         return redirect()->route('citas.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -116,6 +126,11 @@ class CitaController extends Controller
         $cita = Cita::find($id);
         $cita->fill($request->all());
 
+        $cita->save();
+        $dif15min = new \DateInterval('PT15M');
+        $fechaInicio = new DateTime($cita->fecha_hora);
+        $fechaInicio->createFromFormat('Y-m-d\TH:i', $cita->fecha_hora);
+        $cita->fecha_fin = $fechaInicio->add($dif15min);
         $cita->save();
 
         flash('Cita modificada correctamente');

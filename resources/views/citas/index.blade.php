@@ -20,6 +20,8 @@
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th>Lugar</th>
+                                <th>Fin de la cita</th>
+
                                 <th colspan="2">Acciones</th>
                             </tr>
 
@@ -31,6 +33,8 @@
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>{{ $cita->location}}</td>
+                                    <td>{{ $cita->fecha_fin}}</td>
+
                                     <td>
                                         {!! Form::open(['route' => ['citas.edit',$cita->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

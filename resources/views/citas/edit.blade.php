@@ -14,11 +14,7 @@
 
                         <div class="form-group">
                             {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
-
-
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\TH:i')}}" />
-
-
+                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\TH:i')}}"/>
                         </div>
                         <div class="form-group">
                             {!!Form::label('medico_id', 'Medico') !!}
@@ -36,7 +32,6 @@
                             {!! Form::text('location', $cita->location, ['class' => 'form-control', 'required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
-
                         {!! Form::close() !!}
                     </div>
                 </div>
