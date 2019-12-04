@@ -74,9 +74,13 @@ class CitaController extends Controller
         $cita->fecha_fin = $fechaInicio->add($dif15min);
         $cita->save();
 
+
         flash('Cita creada correctamente');
         return redirect()->route('citas.index');
     }
+
+
+
 
 
     /**
@@ -126,11 +130,12 @@ class CitaController extends Controller
         $cita = Cita::find($id);
         $cita->fill($request->all());
 
-        $cita->save();
         $dif15min = new \DateInterval('PT15M');
         $fechaInicio = new DateTime($cita->fecha_hora);
         $fechaInicio->createFromFormat('Y-m-d\TH:i', $cita->fecha_hora);
         $cita->fecha_fin = $fechaInicio->add($dif15min);
+        $cita->save();
+
         $cita->save();
 
         flash('Cita modificada correctamente');
