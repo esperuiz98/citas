@@ -43,7 +43,8 @@ class PacienteController extends Controller
             ->join('especialidads','especialidads.id','=','enfermedads.especialidad_id')
             ->where('especialidads.id',$especialidad_id)->get();
 
-        return view('pacientes/index',['pacientes'=>$pacientes,'especialidades'=>$especialidades]);
+        //return view('pacientes/index',['pacientes'=>$pacientes,'especialidades'=>$especialidades]);
+        return view('pacientes/indexPacientesEspecialidad',['pacientes'=>$pacientes,'especialidades'=>$especialidades]);
     }
 
     /**

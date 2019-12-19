@@ -39,7 +39,7 @@ class CitaController extends Controller
         $horaActual=new DateTime();
         $citas = Cita::where('citas.fecha_hora','<',$horaActual)->get();
 
-        return view('citas/index',['citas'=>$citas]);
+        return view('citas/indexCitasPasadas',['citas'=>$citas]);
     }
 
     /**
