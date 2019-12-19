@@ -12,6 +12,10 @@
                         {!! Form::open(['route' => 'citas.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
+                        <br><br>
+                        {!! Form::open(['route' => 'citas/indexCitasPasadas', 'method' => 'get']) !!}
+                        {!!   Form::submit('Historial de citas', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
 
                         <br><br>
                         <table class="table table-striped table-bordered">

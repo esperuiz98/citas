@@ -19,11 +19,13 @@ Route::delete('especialidades/destroyAll', 'EspecialidadController@destroyAll')-
 Route::resource('especialidades', 'EspecialidadController');
 
 Route::resource('medicos', 'MedicoController');
+Route::get('pacientes/indexPorEspecialidad','PacienteController@indexPacientesEspecialidad')->name('pacientes/indexPorEspecialidad');
 Route::resource('pacientes', 'PacienteController');
 
-
+Route::get('citas/indexCitasPasadas','CitaController@indexCitasPasadas')->name('citas/indexCitasPasadas');
 Route::resource('citas', 'CitaController');
 Route::resource('enfermedades', 'EnfermedadController');
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cassandra\Date;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Cita;
@@ -27,7 +28,15 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::all();
+        $horaActual=new DateTime();
+        $citas = Cita::where('citas.fecha_hora','>=',$horaActual)->get();
+
+        return view('citas/index',['citas'=>$citas]);
+    }
+    public function indexCitasPasadas()
+    {
+        $horaActual=new DateTime();
+        $citas = Cita::where('citas.fecha_hora','<',$horaActual)->get();
 
         return view('citas/index',['citas'=>$citas]);
     }

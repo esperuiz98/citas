@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enfermedad;
 use App\Especialidad;
+use Illuminate\Foundation\EnvironmentDetector;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -19,13 +20,30 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
 
-        $pacientes = Paciente::all();
 
-        return view('pacientes/index',['pacientes'=>$pacientes]);
+        $pacientes=Paciente::all();
+        $especialidades = Especialidad::all()->pluck('name','id');
+
+        return view('pacientes/index',['pacientes'=>$pacientes,'especialidades'=>$especialidades]);
+
+    }
+
+    public function indexPacientesEspecialidad( Request $request)
+    {
+        $especialidades=Especialidad::all()->pluck('name','id');
+        $especialidad_id=$request->get('especialidad_id');
+        //$pacientes=DB::table('pacientes')
+
+        $pacientes = Paciente::select('*')
+            ->join('enfermedads', 'enfermedads.id','=','pacientes.enfermedad_id')
+            ->join('especialidads','especialidads.id','=','enfermedads.especialidad_id')
+            ->where('especialidads.id',$especialidad_id)->get();
+
+        return view('pacientes/index',['pacientes'=>$pacientes,'especialidades'=>$especialidades]);
     }
 
     /**
