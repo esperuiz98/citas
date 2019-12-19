@@ -26,6 +26,8 @@ Route::get('citas/indexCitasPasadas','CitaController@indexCitasPasadas')->name('
 Route::resource('citas', 'CitaController');
 Route::resource('enfermedades', 'EnfermedadController');
 
+Route::resource('locations', 'LocationController');
+
 
 
 
